@@ -1,7 +1,6 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = function getSeason(date) {
-  // remove line with error and write your code here
   let season = "";
   if (date == null) {
     season = "Unable to determine the time of year!";
@@ -17,20 +16,18 @@ module.exports = function getSeason(date) {
       case 3:
       case 4:
         season = "spring";
-
         break;
+
       case 5:
       case 6:
       case 7:
         season = "summer";
-
         break;
 
       case 9:
       case 10:
       case 8:
         season = "autumn";
-
         break;
     }
   }
