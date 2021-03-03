@@ -30,7 +30,9 @@ module.exports = function repeater(str, options) {
 
   function addAddition(options) {
     for (let n = 0; n < options.additionRepeatTimes; n++) {
-      options.addition == null ? result : (result = result + options.addition);
+      options.addition == null
+        ? (result = result + "null")
+        : (result = result + options.addition);
       n != options.additionRepeatTimes - 1
         ? addAdditionSeparator(options)
         : result;
