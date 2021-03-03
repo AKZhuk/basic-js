@@ -5,14 +5,9 @@ module.exports = function repeater(str, options) {
 
   str = String(str);
 
-  options.Addition = String(options.Addition);
-
-  if (
-    options.repeatTimes == undefined &&
-    options.additionRepeatTimes == undefined
-  ) {
+  if (options.repeatTimes == undefined) {
     {
-      result = result + str + options.addition;
+      result = result + str + String(options.addition);
     }
   } else {
     for (let i = 0; i < options.repeatTimes; i++) {
@@ -29,17 +24,24 @@ module.exports = function repeater(str, options) {
   }
 
   function addAddition(options) {
-    for (let n = 0; n < options.additionRepeatTimes; n++) {
-      options.addition == null
-        ? (result = result + "null")
-        : (result = result + options.addition);
-      n != options.additionRepeatTimes - 1
-        ? addAdditionSeparator(options)
-        : result;
+    if (
+      options.additionRepeatTimes == undefined &&
+      options.addition != undefined
+    ) {
+      result = result + String(options.addition);
+    } else {
+      for (let n = 0; n < options.additionRepeatTimes; n++) {
+        result = result + String(options.addition);
+        n != options.additionRepeatTimes - 1
+          ? addAdditionSeparator(options)
+          : result;
+      }
     }
   }
   function addAdditionSeparator(options) {
-    result = result + options.additionSeparator;
+    options.additionSeparator
+      ? (result = result + options.additionSeparator)
+      : (result = result + "|");
   }
   return result;
 };
